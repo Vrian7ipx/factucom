@@ -18,9 +18,9 @@
 		{{ HTML::style('vendor/bcore/plugins/Font-Awesome/css/font-awesome.css') }}
 		<!--END GLOBAL STYLES -->
 		<!-- PAGE LEVEL STYLES -->
-		{{ HTML::style('vendor/bcore/css/layout2.css') }}
-		{{ HTML::style('vendor/bcore/plugins/flot/examples/examples.css') }}
-		{{ HTML::style('vendor/bcore/plugins/timeline/timeline.css') }}
+		{{-- HTML::style('vendor/bcore/css/layout2.css') --}}
+		{{-- HTML::style('vendor/bcore/plugins/flot/examples/examples.css') --}}
+		{{-- HTML::style('vendor/bcore/plugins/timeline/timeline.css') --}}
 		<!-- END PAGE LEVEL  STYLES -->
 		@yield('head')
 	</head>
