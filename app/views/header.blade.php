@@ -24,7 +24,7 @@
 		<!-- END PAGE LEVEL  STYLES -->
 		@yield('head')
 	</head>
-	<body class="padTop53">
+	<body class="padTop53 ">
 		<div id="wrap" >
 			<!-- HEADER SECTION -->
 	        <div id="top">
@@ -524,9 +524,13 @@
 	            </ul>
 
 	        </div>
-	        <!--END MENU SECTION -->
+	        <!--END MENU SECTION -->	        
+	        <div id="content">
+	        	@yield('body')
+	        </div>
+	        
 		</div>
-		@yield('body')
+		
 
 		<div id="footer">
         <p>&copy;  Factucom &nbsp;2016 &nbsp;</p>
