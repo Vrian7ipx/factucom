@@ -71,7 +71,7 @@ class InitialDatabase extends Migration {
 			$table->string('process_number');
 			$table->string('document');
 			$table->string('economic_activity');
-			$table->string('law');
+			$table->string('legend');
 			$table->string('dosage_key');
 			$table->string('invoice_extra_fields');			
 			$table->unsignedInteger('invoice_counter')->default('1');
@@ -180,17 +180,55 @@ class InitialDatabase extends Migration {
 			$table->increments('id');
 			$table->unsignedInteger('public_id');
 			$table->unsignedInteger('enterprice_id')->index();
-			$table->string('ent_nit');
-			$table->string('ent_authorization_number');
-			$table->string('ent_matriz_address');
+
+			/*** INDEX of related tables***/
+			$table->unsignedInteger('dosage_id');
+			$table->unsignedInteger('user_id');			
+			$table->unsignedInteger('client_id');
+			$table->unsignedInteger('dosage_type_id');			
+			/*** Addional account data***/
+			$table->string('nit');
+			$table->string('authorization_number');
+			$table->string('matriz_address');
+			$table->string('city');
+			$table->string('country');
+			$table->date('deadline');
+			/*** Aditional client data***/
+			$table->
+
+			/*** numerical data***/
+			$table->double('net_amount');
+			$table->double('total_amount');
+			$table->double('taxable_amount');
+			$table->float('tax_amount');
+			$table->float('ice_amount');
+			$table->double('excent_amount');
+			$table->float('discount');
+			$table->float('exchange');
+			$table->double('net_amount_dollar');
+			$table->
+
+
+
+			/*** Invoice Data***/
+			$table->unsignedInteger('number');
+			$table->date('date');			
+			$table->unsignedInteger('notes');
+			$table->string('control_code');
+			$table->string('legend');			
 			$table->string('');
 			nit,nombre usuario, nombre o rqazon social, direccion, codigo sucursal, codigo tipo factura,nombrecomprador,dui,indentificador comprador,
 			debito fiscal, importeneto, importe total, importe ice, importe exento, descuento total, codigo cde control, num de autorizacion,
 			numero de factura, actividad economica, fecha emision, numerio de linea, detalle de la compra, precio unitario, canidad m unidad ede medidam, preciototal
 			$table->timestamps();
 			$table->softDeletes();
+			$table->foreing('dosage_id')->references('id')->on('dosages');
+			$table->foreing('user_id')->references('id')->on('users');
+			$table->foreing('dosage_type_id')->references('id')->on('dosage_types');
+			$table->foreing('client_id')->references('id')->on('clients');
 			$table->foreing('enterprice_id')->references('id')->on('enterprices');
 		});
+
 	}
 
 	/**
