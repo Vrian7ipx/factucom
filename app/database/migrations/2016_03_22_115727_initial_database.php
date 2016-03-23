@@ -50,9 +50,18 @@ class InitialDatabase extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 		});
+		Schema::create('dosage_types',function($table){						
+			$table->increments('id');
+			$table->string('name');
+			$table->string('description')->nullable();
+			$table->mediumText('template')->nullable();
+			$table->timestamps();
+			$table->softDeletes();			
+		});
 		Schema::create('dosages',function($table){
 			$table->increments('id');
-			$table->unsignedInteger('enterprice_id')->index();
+			$table->unsignedInteger('dosage_type_id')->index()
+			$table->unsignedInteger('enterprice_id')->index();			
 			$table->string('name');
 			$table->string('address');
 			$table->string('city');
@@ -69,6 +78,7 @@ class InitialDatabase extends Migration {
 			$table->unsignedInteger('public_id');
 			$table->timestamps();
 			$table->softDeletes();
+			$table->foreing('dosage_type_id')->references('id')->on('dosage_types');
 			$table->foreing('enterprice_id')->references('id')->on('enterprices');
 		});
 		Schema::create('users',function($table){
@@ -102,19 +112,85 @@ class InitialDatabase extends Migration {
 			$table->foreing('user_id')->references('id')->on('users');
 			$table->foreing('enterprice_id')->references('id')->on('enterprices');
 		});	
-		Schema::create('products',function($table){
+		Schema::create('units',function($table){
 			$table->increments('id');
 			$table->unsignedInteger('enterprice_id')->index();
 			$table->string('name');
-			$table->string('description');
-			$table->string('code');
-			
+			$table->string('description')->nullable();
+			$table->string('symbol');
 			$table->unsignedInteger('public_id');
 			$table->timestamps();
 			$table->softDeletes();
 			$table->foreing('enterprice_id')->references('id')->on('enterprices');
 		});
-
+		Schema::create('brands',function($table){
+			$table->increments('id');
+			$table->unsignedInteger('public_id');
+			$table->unsignedInteger('enterprice_id')->index();
+			$table->string('name');
+			$table->string('description')->nullable();
+			$table->string('manofacturer')->nullable();
+			$table->string('provider')->nullable();
+			$table->timestamps();
+			$table->softDeletes();
+			$table->foreing('enterprice_id')->references('id')->on('enterprices');
+		});
+		Schema::create('categories',function($table){
+			$table->increments('id');
+			$table->unsignedInteger('public_id');
+			$table->unsignedInteger('enterprice_id')->index();
+			$table->string('name');
+			$table->string('description')->nullable();
+			$table->timestamps();
+			$table->softDeletes();
+			$table->foreing('enterprice_id')->references('id')->on('enterprices');
+		});
+		Schema::create('products',function($table){
+			$table->increments('id');
+			$table->unsignedInteger('enterprice_id')->index();			
+			$table->unsignedInteger('unit_id')->index();
+			$table->unsignedInteger('brand_id')->index();
+			$table->unsignedInteger('category_id')->index();
+			$table->string('name');
+			$table->string('description');
+			$table->string('code');			
+			$table->unsignedInteger('public_id');
+			$table->timestamps();
+			$table->softDeletes();			
+			$table->foreing('category_id')->references('id')->on('categories');
+			$table->foreing('brand_id')->references('id')->on('brands');
+			$table->foreing('unit_id')->references('id')->on('units');			
+			$table->foreing('enterprice_id')->references('id')->on('enterprices');
+		});
+		Schema::create('inventories',function($table){
+			$table->increments('id');
+			$table->unsignedInteger('public_id');
+			$table->unsignedInteger('enterprice_id')->index();
+			$table->unsignedInteger('dosage_id')->index();
+			$table->unsignedInteger('product_id')->index();
+			$table->decimal('stock', 13, 2)->default(0);
+			$table->string('description')->nullable();
+			$table->timestamps();
+			$table->softDeletes();
+			$table->foreing('product_id')->references('id')->on('products');
+			$table->foreing('dosage_id')->references('id')->on('dosages');
+			$table->foreing('enterprice_id')->references('id')->on('enterprices');
+		});
+		Schema::create('invoices',function($table){
+			$table->increments('id');
+			$table->unsignedInteger('public_id');
+			$table->unsignedInteger('enterprice_id')->index();
+			$table->string('ent_nit');
+			$table->string('ent_authorization_number');
+			$table->string('ent_matriz_address');
+			$table->string('');
+			nit,nombre usuario, nombre o rqazon social, direccion, codigo sucursal, codigo tipo factura,nombrecomprador,dui,indentificador comprador,
+			debito fiscal, importeneto, importe total, importe ice, importe exento, descuento total, codigo cde control, num de autorizacion,
+			numero de factura, actividad economica, fecha emision, numerio de linea, detalle de la compra, precio unitario, canidad m unidad ede medidam, preciototal
+			$table->timestamps();
+			$table->softDeletes();
+			$table->foreing('enterprice_id')->references('id')->on('enterprices');
+		});
 	}
 
 	/**
