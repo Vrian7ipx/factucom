@@ -102,9 +102,32 @@ class InitialDatabase extends Migration {
 			$table->foreing('user_id')->references('id')->on('users');
 			$table->foreing('enterprice_id')->references('id')->on('enterprices');
 		});	
+		Schema::create('units',function($table){
+			$table->increments('id');
+			$table->unsignedInteger('enterprice_id')->index();
+			$table->unsignedInteger('public_id');
+			$table->string('name');
+			$table->string('description')->nullable();
+			$table->string('symbol'):
+			$table->timestamps();
+			$table->softDeletes();
+			$table->foreing('enterprice_id')->references('id')->on('enterprices');
+		});
+		Schema::create('brands',function($table){
+			$table->increments('id');
+			$table->unsignedInteger('public_id');
+			$table->unsignedInteger('enterprice_id')->index();
+			$table->string('name');
+			$table->string('description')->nullable();
+			$table->timestamps();
+			$table->softDeletes();
+			$table->foreing('enterprice_id')->references('id')->on('enterprices');
+		});
 		Schema::create('products',function($table){
 			$table->increments('id');
 			$table->unsignedInteger('enterprice_id')->index();
+			$table->unsignedInteger('unit_id')->index();
+			$table->unsignedInteger('brand_id')->index();
 			$table->string('name');
 			$table->string('description');
 			$table->string('code');
@@ -112,6 +135,8 @@ class InitialDatabase extends Migration {
 			$table->unsignedInteger('public_id');
 			$table->timestamps();
 			$table->softDeletes();
+			$table->foreing('brand_id')->references('id')->on('brancs');
+			$table->foreing('unit_id')->references('id')->on('units');
 			$table->foreing('enterprice_id')->references('id')->on('enterprices');
 		});
 
