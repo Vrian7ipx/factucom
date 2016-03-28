@@ -11,6 +11,20 @@
 {{ HTML::style('vendor/bcore/plugins/jquery-steps-master/demo/css/jquery.steps.css') }}
 @stop
 @section('body')
+<!--
+    created by Brian Barrera ©Vrian7
+    Copyright: all right reserved 
+-->
+<!DOCTYPE html>
+@extends('layout')
+@section('title') Ingreso al Sistema @stop
+@section('head')
+    {{ HTML::style('vendor/bcore/plugins/jquery-steps-master/demo/css/normalize.css') }}
+{{ HTML::style('vendor/bcore/plugins/jquery-steps-master/demo/css/wizardMain.css') }}
+{{ HTML::style('vendor/bcore/plugins/jquery-steps-master/demo/css/jquery.steps.css') }}
+@stop
+@section('body')
+<div class="conta
 <div class="inner  col-lg-12" >
     <div class="row">
         <div class="col-lg-12">
