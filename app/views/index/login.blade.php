@@ -33,12 +33,12 @@
         <div id="signup" class="tab-pane">
             <form action="index.html" class="form-signin">
                 <p class="text-muted text-center btn-block btn btn-primary btn-rect">Porfavor ingrese los datos para registrarse</p>
-                 <input type="text" placeholder="Nombre" class="form-control" />
-                 <input type="text" placeholder="Apellidos" class="form-control" />
-                <input type="text" placeholder="Empresa" class="form-control" />
-                <input type="email" placeholder="Correo" class="form-control" />
-                <input type="password" placeholder="Contraseña" class="form-control" />
-                <input type="password" placeholder="Repita" class="form-control" />
+                 <input type="text" name="name" placeholder="Nombre" class="form-control" />
+                 <input type="text" name="enterprice" placeholder="Empresa" class="form-control" />
+                <input type="text" name="domain" placeholder="Dominio en la plataforma" class="form-control" />
+                <input type="email" name="mail" placeholder="Correo" class="form-control" />
+                <input type="text" name="phone" placeholder="Tel&eacute;fono" class="form-control" />
+                <input type="text" name="contact" placeholder="Contacto" class="form-control" />
                 <button class="btn text-muted text-center btn-success" type="submit">Registrar</button>
             </form>
         </div>

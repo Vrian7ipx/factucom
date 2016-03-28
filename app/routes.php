@@ -15,3 +15,8 @@ Route::get('/', function()
 {
 	return View::make('index.dashboard');
 });
+
+Route::group(array('domain'=>'{enterprice}.factucom.inv'),function(){
+	Route::get('ingresar','UserController@login');
+	Route::get('registrar','EnterpriceController@register');
+});
