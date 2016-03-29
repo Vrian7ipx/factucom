@@ -20,6 +20,10 @@
 		{{ HTML::script('vendor/bcore/plugins/jquery-2.0.3.min.js') }}
 		{{ HTML::script('vendor/bcore/plugins/bootstrap/js/bootstrap.js') }}
 		{{ HTML::script('vendor/bcore/js/login.js') }}
+		{{ HTML::script('vendor/bcore/plugins/modernizr-2.6.2-respond-1.1.0.min.js') }}
+		{{ HTML::script('vendor/bcore/plugins/jquery-steps-master/lib/jquery.cookie-1.3.1.js') }}
+		{{ HTML::script('vendor/bcore/plugins/jquery-steps-master/build/jquery.steps.js') }}
+		{{ HTML::script('vendor/bcore/js/WizardInit.js') }}   
 	</body>
 
 </html>
