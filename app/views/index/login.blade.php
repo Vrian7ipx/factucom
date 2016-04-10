@@ -13,12 +13,13 @@
 	</div>
 	<div class="tab-content">
 		<div id="login" class="tab-pane active">
-            <form action="index.html" class="form-signin">
+            <form action="{{asset('ingresar')}}" method='POST' class="form-signin">
                 <p class="text-muted text-center btn-block btn btn-primary btn-rect">
                     Ingrese su Usuario y Password
                 </p>
-                <input type="text" placeholder="Usuario" class="form-control" />
-                <input type="password" placeholder="Contraseña" class="form-control" />
+                <input type="text" placeholder="Usuario" class="form-control" name='username'/>
+                <input type="password" placeholder="Contraseña" class="form-control" name="password" />
+                 <input type="hidden" name="domain" value="{{$domain}}">
                 <button class="btn text-muted text-center btn-danger" type="submit">Ingresar</button>
             </form>
         </div>

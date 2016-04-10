@@ -16,6 +16,8 @@
 		{{ HTML::style('vendor/bcore/css/theme.css') }}
 		{{ HTML::style('vendor/bcore/css/MoneAdmin.css') }}		
 		{{ HTML::style('vendor/bcore/plugins/Font-Awesome/css/font-awesome.css') }}
+		{{ HTML::style('vendor/bcore/plugins/dataTables/dataTables.bootstrap.css') }}
+		{{ HTML::style('vendor/bcore/plugins/chosen/chosen.min.css') }}
 		<!--END GLOBAL STYLES -->
 		<!-- PAGE LEVEL STYLES -->
 		{{-- HTML::style('vendor/bcore/css/layout2.css') --}}
@@ -23,6 +25,11 @@
 		{{-- HTML::style('vendor/bcore/plugins/timeline/timeline.css') --}}
 		
 		<!-- END PAGE LEVEL  STYLES -->
+
+		{{ HTML::script('vendor/bcore/plugins/jquery-2.0.3.min.js') }}
+		{{ HTML::script('vendor/bcore/plugins/bootstrap/js/bootstrap.js') }}
+		{{ HTML::script('vendor/bcore/js/login.js') }}
+		{{ HTML::script('vendor/bcore/plugins//chosen/chosen.jquery.min.js') }}
 		@yield('head')
 	</head>
 	<body class="padTop53 ">
@@ -307,17 +314,16 @@
 	                
 	                <li class="panel active">
 	                    <a href="index.html" >
-	                        <i class="icon-table"></i> Dashboard
-		   
-	                       
+	                        <i class="icon-desktop"></i> Resumen		   	                      
 	                    </a>                   
 	                </li>
+	                <li><a href="{{asset('clientes')}}"><i class="icon-group"></i> Clientes </a></li>
 
 
 
 	                <li class="panel ">
 	                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
-	                        <i class="icon-tasks"> </i> UI Elements     
+	                        <i class="icon-tasks"> </i> Inventario
 		   
 	                        <span class="pull-right">
 	                          <i class="icon-angle-left"></i>
@@ -326,8 +332,8 @@
 	                    </a>
 	                    <ul class="collapse" id="component-nav">
 	                       
-	                        <li class=""><a href="button.html"><i class="icon-angle-right"></i> Buttons </a></li>
-	                         <li class=""><a href="icon.html"><i class="icon-angle-right"></i> Icons </a></li>
+	                        <li class=""><a href="{{asset('productos')}}"><i class="icon-angle-right"></i> Productos </a></li>
+	                         <li class=""><a href="{{asset('categorias')}}"><i class="icon-angle-right"></i> Categorias	 </a></li>
 	                        <li class=""><a href="progress.html"><i class="icon-angle-right"></i> Progress </a></li>
 	                        <li class=""><a href="tabs_panels.html"><i class="icon-angle-right"></i> Tabs & Panels </a></li>
 	                        <li class=""><a href="notifications.html"><i class="icon-angle-right"></i> Notification </a></li>
@@ -340,7 +346,7 @@
 	                </li>
 	                <li class="panel ">
 	                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle collapsed" data-target="#form-nav">
-	                        <i class="icon-pencil"></i> Forms
+	                        <i class="icon-shopping-cart"></i> Ventas
 		   
 	                        <span class="pull-right">
 	                            <i class="icon-angle-left"></i>
@@ -348,7 +354,7 @@
 	                          &nbsp; <span class="label label-success">5</span>&nbsp;
 	                    </a>
 	                    <ul class="collapse" id="form-nav">
-	                        <li class=""><a href="forms_general.html"><i class="icon-angle-right"></i> General </a></li>
+	                        <li class=""><a href="{{asset('facturas')}}"><i class="icon-angle-right"></i> Facturas </a></li>
 	                        <li class=""><a href="forms_advance.html"><i class="icon-angle-right"></i> Advance </a></li>
 	                        <li class=""><a href="forms_validation.html"><i class="icon-angle-right"></i> Validation </a></li>
 	                        <li class=""><a href="forms_fileupload.html"><i class="icon-angle-right"></i> FileUpload </a></li>
@@ -358,7 +364,7 @@
 
 	                <li class="panel">
 	                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#pagesr-nav">
-	                        <i class="icon-table"></i> Pages
+	                        <i class="icon-building"></i> Dosificaci&oacute;n
 		   
 	                        <span class="pull-right">
 	                            <i class="icon-angle-left"></i>
@@ -366,8 +372,8 @@
 	                          &nbsp; <span class="label label-info">6</span>&nbsp;
 	                    </a>
 	                    <ul class="collapse" id="pagesr-nav">
-	                        <li><a href="pages_calendar.html"><i class="icon-angle-right"></i> Calendar </a></li>
-	                        <li><a href="pages_timeline.html"><i class="icon-angle-right"></i> Timeline </a></li>
+	                        <li><a href="{{asset('sucursales')}}"><i class="icon-angle-right"></i> Sucursales </a></li>
+	                        <li><a href="{{asset('examen')}}"><i class="icon-angle-right"></i> Examen SFV </a></li>
 	                        <li><a href="pages_social.html"><i class="icon-angle-right"></i> Social </a></li>
 	                        <li><a href="pages_pricing.html"><i class="icon-angle-right"></i> Pricing </a></li>
 	                        <li><a href="pages_offline.html"><i class="icon-angle-right"></i> Offline </a></li>
@@ -536,9 +542,7 @@
 		<div id="footer">
         <p>&copy;  Factucom &nbsp;2016 &nbsp;</p>
     	</div>
-		{{ HTML::script('vendor/bcore/plugins/jquery-2.0.3.min.js') }}
-		{{ HTML::script('vendor/bcore/plugins/bootstrap/js/bootstrap.js') }}
-		{{ HTML::script('vendor/bcore/js/login.js') }}
+		
 		
 	</body>
 </html>

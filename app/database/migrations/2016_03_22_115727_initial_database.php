@@ -25,7 +25,7 @@ class InitialDatabase extends Migration {
 		Schema::create('invoice_statuses',function($table){
 			$table->increments('id');
 			$table->string('name');
-			$table->string('description');
+			$table->string('description')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -62,7 +62,7 @@ class InitialDatabase extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 		});
-		Schema::create('dosage_types',function($table){						
+		Schema::create('branch_types',function($table){						
 			$table->increments('id');
 			$table->string('name');
 			$table->string('description')->nullable();
@@ -70,9 +70,9 @@ class InitialDatabase extends Migration {
 			$table->timestamps();
 			$table->softDeletes();			
 		});
-		Schema::create('dosages',function($table){
+		Schema::create('branches',function($table){
 			$table->increments('id');
-			$table->unsignedInteger('dosage_type_id')->index();
+			$table->unsignedInteger('branch_type_id')->index();
 			$table->unsignedInteger('enterprice_id')->index();			
 			$table->string('name');
 			$table->string('address');
@@ -90,14 +90,14 @@ class InitialDatabase extends Migration {
 			$table->unsignedInteger('public_id');
 			$table->timestamps();
 			$table->softDeletes();
-			$table->foreign('dosage_type_id')->references('id')->on('dosage_types');
+			$table->foreign('branch_type_id')->references('id')->on('branch_types');
 			$table->foreign('enterprice_id')->references('id')->on('enterprices');
 		});
 		Schema::create('users',function($table){
 			$table->increments('id');
 			$table->unsignedInteger('enterprice_id')->index();
 			$table->unsignedInteger('rol_id')->index();
-			$table->unsignedInteger('dosage_id')->nullable();
+			$table->unsignedInteger('branch_id')->nullable();
 			$table->string('name');
 			$table->string('username');
 			$table->string('password');
@@ -187,7 +187,7 @@ class InitialDatabase extends Migration {
 			$table->unsignedInteger('brand_id')->index();
 			$table->unsignedInteger('category_id')->index();
 			$table->string('name');
-			$table->string('description');
+			$table->string('description')->nullable();
 			$table->string('code');			
 			$table->unsignedInteger('public_id');
 			$table->timestamps();
@@ -201,14 +201,14 @@ class InitialDatabase extends Migration {
 			$table->increments('id');
 			$table->unsignedInteger('public_id');
 			$table->unsignedInteger('enterprice_id')->index();
-			$table->unsignedInteger('dosage_id')->index();
+			$table->unsignedInteger('branch_id')->index();
 			$table->unsignedInteger('product_id')->index();
 			$table->decimal('stock', 13, 2)->default(0);
 			$table->string('description')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 			$table->foreign('product_id')->references('id')->on('products');
-			$table->foreign('dosage_id')->references('id')->on('dosages');
+			$table->foreign('branch_id')->references('id')->on('branches');
 			$table->foreign('enterprice_id')->references('id')->on('enterprices');
 		});
 		Schema::create('clients',function($table){
@@ -240,10 +240,10 @@ class InitialDatabase extends Migration {
 			$table->unsignedInteger('enterprice_id')->index();
 
 			/*** INDEX of related tables***/
-			$table->unsignedInteger('dosage_id');
+			$table->unsignedInteger('branch_id');
 			$table->unsignedInteger('user_id');			
 			$table->unsignedInteger('client_id');
-			$table->unsignedInteger('dosage_type_id');	
+			$table->unsignedInteger('branch_type_id');	
 			$table->string('invoice_status_ids');		
 			/*** Addional account data***/
 			$table->string('nit');
@@ -282,9 +282,9 @@ class InitialDatabase extends Migration {
 			//numero de factura, actividad economica, fecha emision, numerio de linea, detalle de la compra, precio unitario, canidad m unidad ede medidam, preciototal
 			$table->timestamps();
 			$table->softDeletes();
-			$table->foreign('dosage_id')->references('id')->on('dosages');
+			$table->foreign('branch_id')->references('id')->on('branches');
 			$table->foreign('user_id')->references('id')->on('users');
-			$table->foreign('dosage_type_id')->references('id')->on('dosage_types');
+			$table->foreign('branch_type_id')->references('id')->on('branch_types');
 			$table->foreign('client_id')->references('id')->on('clients');
 			$table->foreign('enterprice_id')->references('id')->on('enterprices');
 		});

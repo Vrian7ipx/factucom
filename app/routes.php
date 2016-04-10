@@ -17,6 +17,75 @@ Route::get('/', function()
 });
 
 Route::group(array('domain'=>'{enterprice}.factucom.inv'),function(){
-	Route::get('ingresar','UserController@login');
+	/*** USER CONTROLLER ***/
+	//Route::get('ingresar','UserController@login');
+
+	
+
+	Route::get('ingresar',function($enterprice){
+		return View::make('index.login',array('domain' => $enterprice));			
+	});
+	Route::post('ingresar','UserController@enter');
+	Route::get('salir','UserController@logout');
+	/*** ENTERPRICECONTROLLER ***/
 	Route::get('registrar','EnterpriceController@register');
+
+	Route::post('registrar','EnterpriceController@store');
+
+	Route::get('inicio', function()
+	{
+		return View::make('index.dashboard');
+	});
+
+
+});
+
+Route::group(array('before' => 'auth'), function(){
+	
+	/*** CLIENTCONTROLLER ***/
+	Route::get('clientes','ClientController@index');
+	Route::get('cliente','ClientController@create');
+	Route::post('cliente','ClientController@store');
+	Route::get('cliente/{public_id}','ClientController@show');
+	Route::get('cliente/editar/{public_id}','ClientController@edit');
+	Route::post('cliente/editar/{public_id}','ClientController@update');
+	Route::get('cliente/eliminar/{public_id}','ClientController@delete');
+
+	/*** CATEGORYCONTROLLER ***/
+	Route::get('categorias','CategoryController@index');
+	Route::get('categoria','CategoryController@create');
+	Route::post('categoria','CategoryControllerr@store');
+	Route::get('categoria/{public_id}','CategoryController@show');
+	Route::get('categoria/editar/{public_id}','CategoryController@edit');
+	Route::post('categoria/editar/{public_id}','CategoryController@update');
+	Route::get('categoria/eliminar/{public_id}','CategoryController@delete');
+
+	/*** PRODUCTCONTROLLER ***/
+	Route::get('productos','ProductController@index');
+	Route::get('producto','ProductController@create');
+	Route::post('producto','ProductController@store');
+	Route::get('producto/{public_id}','ProductController@show');
+	Route::get('producto/editar/{public_id}','ProductController@edit');
+	Route::post('producto/editar/{public_id}','ProductController@update');
+	Route::get('producto/eliminar/{public_id}','ProductController@delete');
+
+	/*** BRANCHCONTROLLER ***/
+	Route::get('sucursales','BranchController@index');
+	Route::get('sucursal','BranchController@create');
+	Route::post('sucursal','BranchController@store');
+	Route::get('sucursal/{public_id}','BranchController@show');
+	Route::get('sucursal/editar/{public_id}','BranchController@edit');
+	Route::post('sucursal/editar/{public_id}','BranchController@update');
+	Route::get('sucursal/eliminar/{public_id}','BranchController@delete');	
+	Route::get('examen','BranchController@test');
+	Route::post('examen','BranchController@testResult');
+
+	/*** INVOICECONTROLLER ***/
+	Route::get('invoices','InvoiceController@index');
+	Route::get('invoice','InvoiceController@create');
+	Route::post('invoice','InvoiceController@store');
+	Route::get('invoice/{public_id}','InvoiceController@show');
+	Route::get('invoice/editar/{public_id}','InvoiceController@edit');
+	Route::post('invoice/editar/{public_id}','InvoiceController@update');
+	Route::get('invoice/eliminar/{public_id}','InvoiceController@delete');
 });
