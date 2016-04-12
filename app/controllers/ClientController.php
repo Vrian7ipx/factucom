@@ -8,7 +8,11 @@ class ClientController extends \BaseController{
 		return View::make('client.index',$data);
 	}
 	public function show($public_id){
-
+		$client = Client::where('enterprice_id',Auth::user()->enterprice_id)->where('public_id',$public_id)->first();
+		$data = [
+			'client' => $client,
+		];
+		return View::make('client.view',$data);
 	}
 	public function create(){		
 		return View::make('client.create');
@@ -51,28 +55,16 @@ class ClientController extends \BaseController{
 	public function delete($public_id){
 
 	}
+	public function findByString(){
+	$string = Input::get('name');
+  /*$clients = Client::where('account_id','=', Auth::user()->account_id)->where('name','like',$cadena."%")->select('id','name','nit','business_name','public_id')->get();
+        $total =0;
+        foreach($clients as $key => $value) {
+         $total++;
+        }*/
+  		//if($total==0)
+   		$clients = Client::where('nit','like',$string."%")->where('enterprice_id','=', Auth::user()->enterprice_id)->select('id','name','nit','business_name','public_id')->get();
+  		return Response::json($clients);  
+	}
 }
 ?>
-
-<!-- 
-	public function index(){
-
-	}
-	public function show($public_id){
-
-	}
-	public function create(){
-
-	}
-	public function store(){
-
-	}
-	public function edit($public_id){
-
-	}
-	public function update($public_id){
-
-	}
-	public function delete($public_id){
-		
-	} -->

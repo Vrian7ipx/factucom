@@ -48,6 +48,12 @@
                         <input type="text"  placeholder="Ingrese un nombre para el producto" name="name" class="form-control" />
                     </div>
                 </div>                
+                <div class="form-group">
+                    <label for="text1" class="control-label col-lg-4">Precio nominal del producto</label>
+                    <div class="col-lg-8">
+                        <input type="text"  placeholder="Ingrese un precio nominal" name="price" class="form-control" />
+                    </div>
+                </div>
         </div>
 
         
@@ -91,7 +97,7 @@
                     <div class="col-lg-8">
                         <select data-placeholder="Categorizacion de productos" name="category" class="form-control chzn-select chzn-rtl" tabindex="9">
                             @foreach($categories as $category)
-                                <option value="{{$category->public_id}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach                        
                         </select>
                     </div>
@@ -101,7 +107,7 @@
                     <div class="col-lg-8">
                         <select data-placeholder="Unidad del producto" name="unit" class="form-control chzn-select chzn-rtl" tabindex="9">
                             @foreach($units as $unit)
-                                <option value="{{$unit->public_id}}">{{$unit->name}}</option>
+                                <option value="{{$unit->id}}">{{$unit->name}}</option>
                             @endforeach                        
                         </select>
                     </div>
@@ -111,7 +117,7 @@
                     <div class="col-lg-8">
                         <select data-placeholder="Marca del producto" name="brand" class="form-control chzn-select chzn-rtl" tabindex="9">
                             @foreach($brands as $brand)
-                                <option value="{{$brand->public_id}}">{{$brand->name}}</option>
+                                <option value="{{$brand->id}}">{{$brand->name}}</option>
                             @endforeach                        
                         </select>
                     </div>

@@ -7,10 +7,34 @@ class BranchController extends \BaseController{
 
 	}
 	public function create(){
-
+		$types = BranchType::get();
+		$data = [
+			'types' => $types
+		];
+		return View::make('branch.create',$data);
 	}
 	public function store(){
-
+		$branch = new Branch();
+		$branch->enterprice_id = Auth::user()->enterprice_id;
+		$branch->branch_type_id = Input::get('branch_type');
+		$branch->name = Input::get('name');
+		$branch->address = Input::get('address');
+		$branch->city = Input::get('city');
+		$branch->state = Input::get('state');
+		$branch->zone = Input::get('zone');
+		$branch->phone = Input::get('phone');
+		$branch->number = Input::get('number');
+		$branch->process_number = Input::get('process_number');
+		$branch->authorization_number = Input::get('authorization_number');
+		$branch->deadline = Input::get('deadline');
+		$branch->economic_activity = Input::get('activity');
+		$branch->legend = Input::get('legend');
+		$branch->dosage_key = Input::get('dosage_key');
+		$branch->invoice_counter = 0;
+		$doc = BranchType::where('id',$branch->branch_type_id)->first();
+		$branch->document = $doc->template;
+		$branch->save();
+		return 0;
 	}
 	public function edit($public_id){
 

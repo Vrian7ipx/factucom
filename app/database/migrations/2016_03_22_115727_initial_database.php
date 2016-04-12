@@ -78,9 +78,12 @@ class InitialDatabase extends Migration {
 			$table->string('address');
 			$table->string('city');
 			$table->string('state');
+			$table->string('zone');
 			$table->string('phone');
-			$table->unsignedInteger('branch_number');
+			$table->unsignedInteger('number');
 			$table->string('process_number');
+			$table->string('authorization_number');
+			$table->date('deadline');
 			$table->string('document');
 			$table->string('economic_activity');
 			$table->string('legend');
@@ -189,6 +192,7 @@ class InitialDatabase extends Migration {
 			$table->string('name');
 			$table->string('description')->nullable();
 			$table->string('code');			
+			$table->double('price')->default(0);
 			$table->unsignedInteger('public_id');
 			$table->timestamps();
 			$table->softDeletes();			

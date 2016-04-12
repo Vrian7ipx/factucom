@@ -25,6 +25,7 @@ class ProductController extends \BaseController{
 		$product->brand_id = Input::get('brand');
 		$product->name = Input::get('name');
 		$product->code = Input::get('code');
+		$product->price = Input::get('price');
 		$product->description = Input::get('description');
 		$product->save();
 

@@ -18,6 +18,7 @@
 		{{ HTML::style('vendor/bcore/plugins/Font-Awesome/css/font-awesome.css') }}
 		{{ HTML::style('vendor/bcore/plugins/dataTables/dataTables.bootstrap.css') }}
 		{{ HTML::style('vendor/bcore/plugins/chosen/chosen.min.css') }}
+		{{ HTML::style('vendor/bcore/plugins/datepicker/css/datepicker.css') }}
 		<!--END GLOBAL STYLES -->
 		<!-- PAGE LEVEL STYLES -->
 		{{-- HTML::style('vendor/bcore/css/layout2.css') --}}
@@ -29,7 +30,9 @@
 		{{ HTML::script('vendor/bcore/plugins/jquery-2.0.3.min.js') }}
 		{{ HTML::script('vendor/bcore/plugins/bootstrap/js/bootstrap.js') }}
 		{{ HTML::script('vendor/bcore/js/login.js') }}
-		{{ HTML::script('vendor/bcore/plugins//chosen/chosen.jquery.min.js') }}
+		{{ HTML::script('vendor/bcore/plugins/chosen/chosen.jquery.min.js') }}
+		{{ HTML::script('vendor/bcore/plugins/datepicker/js/bootstrap-datepicker.js') }}	
+		
 		@yield('head')
 	</head>
 	<body class="padTop53 ">

@@ -50,6 +50,8 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('cliente/editar/{public_id}','ClientController@edit');
 	Route::post('cliente/editar/{public_id}','ClientController@update');
 	Route::get('cliente/eliminar/{public_id}','ClientController@delete');
+	Route::get('buscar_cliente','ClientController@findByString');
+	
 
 	/*** CATEGORYCONTROLLER ***/
 	Route::get('categorias','CategoryController@index');
@@ -81,11 +83,13 @@ Route::group(array('before' => 'auth'), function(){
 	Route::post('examen','BranchController@testResult');
 
 	/*** INVOICECONTROLLER ***/
-	Route::get('invoices','InvoiceController@index');
-	Route::get('invoice','InvoiceController@create');
-	Route::post('invoice','InvoiceController@store');
-	Route::get('invoice/{public_id}','InvoiceController@show');
-	Route::get('invoice/editar/{public_id}','InvoiceController@edit');
-	Route::post('invoice/editar/{public_id}','InvoiceController@update');
-	Route::get('invoice/eliminar/{public_id}','InvoiceController@delete');
+	Route::get('facturas','InvoiceController@index');
+	Route::get('factura','InvoiceController@create');
+	Route::post('factura','InvoiceController@store');
+	Route::get('factura/{public_id}','InvoiceController@show');
+	Route::get('factura/editar/{public_id}','InvoiceController@edit');
+	Route::post('factura/editar/{public_id}','InvoiceController@update');
+	Route::get('factura/eliminar/{public_id}','InvoiceController@delete');
+	Route::get('previsualizacion/factura','InvoiceController@previewInvoice');
+	
 });
