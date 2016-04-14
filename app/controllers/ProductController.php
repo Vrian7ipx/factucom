@@ -1,10 +1,24 @@
 <?php 
 class ProductController extends \BaseController{
 	public function index(){
-		return 0;
+		$products = Product::where('enterprice_id',Auth::user()->enterprice_id)->get();
+		$data = [
+			'products' => $products,
+		];
+		return View::make('product.index',$data);
 	}
 	public function show($public_id){
-
+		$product = Product::where('enterprice_id',Auth::user()->enterprice_id)->where('public_id',$public_id)->first();
+		$category = Category::where('id',$product->category_id)->first();
+		$unit = Unit::where('id',$product->unit_id)->first();
+		$brand = Brand::where('id',$product->brand_id)->first();
+		$data = [
+			'product' => $product,			
+			'category' => $category->name,
+			'unit' => $unit->name,
+			'brand' => $brand->name,
+		];
+		return View::make('product.show',$data);
 	}
 	public function create(){
 		$cate = Category::where('enterprice_id',Auth::user()->enterprice_id)->get();
@@ -28,12 +42,21 @@ class ProductController extends \BaseController{
 		$product->price = Input::get('price');
 		$product->description = Input::get('description');
 		$product->save();
-
-		return 0;
+		return Redirect::to('productos');
 
 	}
 	public function edit($public_id){
-
+		$product = Product::where('enterprice_id',Auth::user()->enterprice_id)->where('public_id',$public_id)->first();
+		$cate = Category::where('enterprice_id',Auth::user()->enterprice_id)->get();
+		$uni = Unit::where('enterprice_id',Auth::user()->enterprice_id)->get();
+		$bran = Brand::where('enterprice_id',Auth::user()->enterprice_id)->get();
+		$data = [
+			'product' => $product,
+			'categories' => $cate,
+			'units' => $uni,
+			'brands' => $bran,
+		];
+		return View::make('product.edit',$data);
 	}
 	public function update($public_id){
 

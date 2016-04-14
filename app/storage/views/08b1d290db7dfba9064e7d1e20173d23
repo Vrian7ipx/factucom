@@ -1,6 +1,6 @@
-@extends('header')
-@section('body')
-{{ HTML::style('vendor/select2/select2.min.css') }}
+<?php $__env->startSection('body'); ?>
+<?php echo HTML::style('vendor/select2/select2.min.css'); ?>
+
 <style type="text/css">
  table thead th, table thead td {
   padding: 10px 18px;
@@ -46,7 +46,7 @@
         </div>
       </header>         
       <div id="div-1" class="accordion-body collapse in body">
-        <form class="form-horizontal" method="POST" action="{{asset('factura')}}">          
+        <form class="form-horizontal" method="POST" action="<?php echo asset('factura'); ?>">          
           <div class="form-group col-lg-5">
               <label>Cliente</label>
               <select id="client" name="client" onchange="addValuesClient(this)" class="form-control js-data-example-ajax">
@@ -95,7 +95,7 @@
               <select class="form-control" id="selectableproducts" style="width: 100%;">
                 <option></option>
                 <?php foreach ($products as $key => $product){?>  
-                <option value="{{$key}}">{{$product->code." - ".$product->name}}</option>
+                <option value="<?php echo $key; ?>"><?php echo $product->code." - ".$product->name; ?></option>
                 <?php } ?>
               </select>     
             </div>                
@@ -120,7 +120,7 @@
             <div class="col-lg-1"></div>            
             <div class="col-lg-12">
             <div class="col-lg-3"></div>
-            <div class="col-lg-2"><a class="btn btn-primary" href="{{asset('facturas')}}"><i class="icon-ban-circle icon-white"></i> Cancelar</a></div>
+            <div class="col-lg-2"><a class="btn btn-primary" href="<?php echo asset('facturas'); ?>"><i class="icon-ban-circle icon-white"></i> Cancelar</a></div>
             <div class="col-lg-2"> <a type="button" class="btn btn-info btn-circle btn-lg" onclick="preview()"><i class="icon-eye-open"></i></a></div>
             <div class="col-lg-2"><button class="btn btn-success" type="submit"><i class="icon-save icon-white"></i> Guardar</button></div>            
           </form>
@@ -138,9 +138,9 @@
           <div class="modal-body col-lg-12">
 
 
-        <iframe id="theFrame2" type="text/html" src="{{asset('factura2?dato=1')}}" frameborder="1" width="100%" height="800"></iframe>
+        <iframe id="theFrame2" type="text/html" src="<?php echo asset('factura2?dato=1'); ?>" frameborder="1" width="100%" height="800"></iframe>
 
-        <!--<iframe id="theFrame2" type="text/html" src="{{asset('preview?dato=1')}}" frameborder="1" width="100%" height="800"></iframe>-->
+        <!--<iframe id="theFrame2" type="text/html" src="<?php echo asset('preview?dato=1'); ?>" frameborder="1" width="100%" height="800"></iframe>-->
 
           </div>
             <div class="modal-footer">
@@ -149,7 +149,8 @@
       </div>
      </div>
   </div>
-{{ HTML::script('vendor/select2/select2.full.min.js') }}
+<?php echo HTML::script('vendor/select2/select2.full.min.js'); ?>
+
 <script type="text/javascript">
 /*** DATE ***/
 $("#date").datepicker();
@@ -173,18 +174,18 @@ $(".select2").select2();
         }
     });
     //********************
-{{--
+<?php /*
 //$("#desc").bootstrapSwitch();
 
 $("#desc").on('switchChange.bootstrapSwitch',function(e, data){
     calculateAllTotal( $("#desc").prop('checked'));
     if($("#desc").prop('checked'))
-        $("#desc").siblings(".bootstrap-switch-label").text("{{$moneda}}");
+        $("#desc").siblings(".bootstrap-switch-label").text("<?php echo $moneda; ?>");
     else
         $("#desc").siblings(".bootstrap-switch-label").text("%");
     
 
-});--}}
+});*/ ?>
 
 $(document).on('keyup','.number_field',function(){
   number = $(this).val();
@@ -238,7 +239,7 @@ function preview()
 }
 else{
     var datos = $('#formulario').serialize();
-    $('#theFrame2').attr('src', '{{asset("previsualizacion/factura?'+datos+'")}}' );
+    $('#theFrame2').attr('src', '<?php echo asset("previsualizacion/factura?'+datos+'"); ?>' );
     $('#preview').modal('show');}
 
 }
@@ -275,7 +276,7 @@ $("#email").click(function(){
   $("#mail").val("1");
 });
 /****Inicializacion de variables globales para la factura****/
-var products = {{ $products }};
+var products = <?php echo $products; ?>;
 var selected_products=[];
 var total = 0;
 var subtotal = 0;
@@ -288,7 +289,7 @@ var changing_note = false;
 // $(".code").select2();
 // $(".notes1").select2();
 //addProducts(1);
-var productos = {{ $products }};
+var productos = <?php echo $products; ?>;
 console.log(productos[0]);
 
 $selectObject = $("#selectableproducts").select2({
@@ -379,7 +380,7 @@ $(document).on('focus', '.select2', function() {
 $("#client").select2({
   ajax: {
     Type: 'POST',
-    url: "{{ URL::to('buscar_cliente') }}",
+    url: "<?php echo URL::to('buscar_cliente'); ?>",
     data: function (params) {
       return {
         name: params.term, // search term
@@ -450,7 +451,7 @@ $('#client').select2('data', {id:103, label:'ENABLED_FROM_JS'});
 
     $.ajax({
           type: 'POST',
-          url:'{{ URL::to('clientes') }}',
+          url:'<?php echo URL::to('clientes'); ?>',
           data: 'business_name='+razon+'&nit='+nit+'&name='+user+'&json=1',
           beforeSend: function(){
             console.log("Inicia ajax client register ");
@@ -473,7 +474,7 @@ $('#client').select2('data', {id:103, label:'ENABLED_FROM_JS'});
     $("#client").select2({
         ajax: {
           Type: 'POST',
-          url: "{{ URL::to('obtenercliente') }}",
+          url: "<?php echo URL::to('obtenercliente'); ?>",
           data: function (params) {
             return {
               name: params.term, // search term
@@ -518,7 +519,7 @@ $('#client').select2('data', {id:103, label:'ENABLED_FROM_JS'});
 ///$("#invoice_date").datepicker(/*"update", new Date()*/);
 //$("#invoice_date").datepicker({  endDate: '+2d' });
     //$("#dp3").bootstrapDP();
-last_invoice_date = {{$last_invoice_date}};
+last_invoice_date = <?php echo $last_invoice_date; ?>;
 last_invoice_date = '-'+last_invoice_date+'D';
 //console.log("-->>>><"+last_invoice_date);
 $( "#invoice_date" ).datepicker({ minDate: last_invoice_date, maxDate: "+0D" }).datepicker({ dateFormat: 'dd-mm-yy' }).datepicker("setDate", new Date());
@@ -802,7 +803,7 @@ function completeItem(ind_act,index){
     unidad = $("#unit_new").val();
     $.ajax({
           type: 'POST',
-          url:'{{ URL::to('productos') }}',
+          url:'<?php echo URL::to('productos'); ?>',
           data: 'product_key='+product_key+'&notes='+item+'&cost='+cost+'&category_id='+category+'&json=1&unidad='+unidad,
           beforeSend: function(){
             console.log("Inicia ajax with ");
@@ -900,7 +901,7 @@ function completeItem(ind_act,index){
   function agregarContactos(id){
     $.ajax({
           type: 'POST',
-          url:'{{ URL::to('getClientContacts') }}',
+          url:'<?php echo URL::to('getClientContacts'); ?>',
           data: 'id='+id,
           beforeSend: function(){
             console.log("Inicia ajax with ");
@@ -928,7 +929,7 @@ function completeItem(ind_act,index){
     category = $("#categoy_news").val();
     $.ajax({
           type: 'POST',
-          url:'{{ URL::to('productos') }}',
+          url:'<?php echo URL::to('productos'); ?>',
           data: 'product_key='+product_key+'&notes='+item+'&cost='+cost+'&category_id=1&json=2',
           beforeSend: function(){
             console.log("Inicia ajax with ");
@@ -1119,4 +1120,5 @@ $(document).ready(function(){
 
 
 </script>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -74,6 +74,7 @@ class InitialDatabase extends Migration {
 			$table->increments('id');
 			$table->unsignedInteger('branch_type_id')->index();
 			$table->unsignedInteger('enterprice_id')->index();			
+			$table->boolean('central_house')->default(0);
 			$table->string('name');
 			$table->string('address');
 			$table->string('city');
@@ -253,6 +254,7 @@ class InitialDatabase extends Migration {
 			$table->string('nit');
 			$table->string('authorization_number');
 			$table->string('matriz_address');
+			$table->string('dosage_key');
 			$table->string('city');
 			$table->string('country');
 			$table->date('deadline');
@@ -300,7 +302,7 @@ class InitialDatabase extends Migration {
 			$table->unsignedInteger('product_id')->index();		
 			$table->string('name');
 			$table->string('code');
-			$table->double('cost');
+			$table->double('price');
 			$table->float('quantity');
 			$table->timestamps();
 			$table->softDeletes();

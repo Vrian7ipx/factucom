@@ -12,7 +12,7 @@ class ClientController extends \BaseController{
 		$data = [
 			'client' => $client,
 		];
-		return View::make('client.view',$data);
+		return View::make('client.show',$data);
 	}
 	public function create(){		
 		return View::make('client.create');
@@ -30,7 +30,7 @@ class ClientController extends \BaseController{
 		$client->flow = 0;
 		$client->contact_data = Input::get('contact_data');		
 		$client->save();
-		return 0;
+		return Redirect::to('clientes');
 
 	}
 	public function edit($public_id){		
@@ -50,7 +50,7 @@ class ClientController extends \BaseController{
 		$client->description = Input::get('description');		
 		$client->contact_data = Input::get('contact_data');		
 		$client->save();
-		return 0;
+		return Redirect::to('clientes');
 	}
 	public function delete($public_id){
 

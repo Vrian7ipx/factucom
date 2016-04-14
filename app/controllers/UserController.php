@@ -17,13 +17,12 @@ class UserController extends \BaseController{
 		return 0;
 	}
 
-	public function logout(){
+	public function logout(){		
 		if(Auth::check()){
-			Auth::logout();
-			return 0;
+			Auth::logout();			
+		}		
 
-		}
-		else return 1;
+		return Redirect::to('ingresar');
 
 	}
 }

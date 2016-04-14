@@ -6,34 +6,45 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>@yield('title','Factufacil')</title>
+		<title><?php echo $__env->yieldContent('title','Factufacil'); ?></title>
 		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 		<meta content="" name="description" />
 		<meta content="" name="author" />
 		<!-- GLOBAL STYLES -->
-		{{ HTML::style('vendor/bcore/plugins/bootstrap/css/bootstrap.css') }}
-		{{ HTML::style('vendor/bcore/css/main.css') }}
-		{{ HTML::style('vendor/bcore/css/theme.css') }}
-		{{ HTML::style('vendor/bcore/css/MoneAdmin.css') }}		
-		{{ HTML::style('vendor/bcore/plugins/Font-Awesome/css/font-awesome.css') }}
-		{{ HTML::style('vendor/bcore/plugins/dataTables/dataTables.bootstrap.css') }}
-		{{ HTML::style('vendor/bcore/plugins/chosen/chosen.min.css') }}
-		{{ HTML::style('vendor/bcore/plugins/datepicker/css/datepicker.css') }}
+		<?php echo HTML::style('vendor/bcore/plugins/bootstrap/css/bootstrap.css'); ?>
+
+		<?php echo HTML::style('vendor/bcore/css/main.css'); ?>
+
+		<?php echo HTML::style('vendor/bcore/css/theme.css'); ?>
+
+		<?php echo HTML::style('vendor/bcore/css/MoneAdmin.css'); ?>		
+		<?php echo HTML::style('vendor/bcore/plugins/Font-Awesome/css/font-awesome.css'); ?>
+
+		<?php echo HTML::style('vendor/bcore/plugins/dataTables/dataTables.bootstrap.css'); ?>
+
+		<?php echo HTML::style('vendor/bcore/plugins/chosen/chosen.min.css'); ?>
+
+		<?php echo HTML::style('vendor/bcore/plugins/datepicker/css/datepicker.css'); ?>
+
 		<!--END GLOBAL STYLES -->
 		<!-- PAGE LEVEL STYLES -->
-		{{-- HTML::style('vendor/bcore/css/layout2.css') --}}
-		{{-- HTML::style('vendor/bcore/plugins/flot/examples/examples.css') --}}
-		{{-- HTML::style('vendor/bcore/plugins/timeline/timeline.css') --}}
+		<?php /* HTML::style('vendor/bcore/css/layout2.css') */ ?>
+		<?php /* HTML::style('vendor/bcore/plugins/flot/examples/examples.css') */ ?>
+		<?php /* HTML::style('vendor/bcore/plugins/timeline/timeline.css') */ ?>
 		
 		<!-- END PAGE LEVEL  STYLES -->
 
-		{{ HTML::script('vendor/bcore/plugins/jquery-2.0.3.min.js') }}
-		{{ HTML::script('vendor/bcore/plugins/bootstrap/js/bootstrap.js') }}
-		{{ HTML::script('vendor/bcore/js/login.js') }}
-		{{ HTML::script('vendor/bcore/plugins/chosen/chosen.jquery.min.js') }}
-		{{ HTML::script('vendor/bcore/plugins/datepicker/js/bootstrap-datepicker.js') }}	
+		<?php echo HTML::script('vendor/bcore/plugins/jquery-2.0.3.min.js'); ?>
+
+		<?php echo HTML::script('vendor/bcore/plugins/bootstrap/js/bootstrap.js'); ?>
+
+		<?php echo HTML::script('vendor/bcore/js/login.js'); ?>
+
+		<?php echo HTML::script('vendor/bcore/plugins/chosen/chosen.jquery.min.js'); ?>
+
+		<?php echo HTML::script('vendor/bcore/plugins/datepicker/js/bootstrap-datepicker.js'); ?>	
 		
-		@yield('head')
+		<?php echo $__env->yieldContent('head'); ?>
 	</head>
 	<body class="padTop53 ">
 		<div id="wrap" >
@@ -48,7 +59,7 @@
 	                <header class="navbar-header">
 
 	                    <a href="index.html" class="navbar-brand">
-	                    <img src="{{asset('vendor/bcore/img/logo.png')}}" alt="" />
+	                    <img src="<?php echo asset('vendor/bcore/img/logo.png'); ?>" alt="" />
 	                        
 	                        </a>
 	                </header>
@@ -295,11 +306,11 @@
 	       <div id="left" >
 	            <div class="media user-media well-small">
 	                <a class="user-link" href="#">
-	                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="{{asset('vendor/bcore/img/user.gif')}}" />
+	                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="<?php echo asset('vendor/bcore/img/user.gif'); ?>" />
 	                </a>
 	                <br />
 	                <div class="media-body">
-	                    <h5 class="media-heading"> {{Auth::user()->name}}</h5>
+	                    <h5 class="media-heading"> <?php echo Auth::user()->name; ?></h5>
 	                    <ul class="list-unstyled user-info">
 	                        
 	                        <li>
@@ -316,11 +327,11 @@
 
 	                
 	                <li class="panel active">
-	                    <a href="{{asset('inicio')}}" >
+	                    <a href="<?php echo asset('inicio'); ?>" >
 	                        <i class="icon-desktop"></i> Resumen		   	                      
 	                    </a>                   
 	                </li>
-	                <li><a href="{{asset('clientes')}}"><i class="icon-group"></i> Clientes </a></li>
+	                <li><a href="<?php echo asset('clientes'); ?>"><i class="icon-group"></i> Clientes </a></li>
 
 
 
@@ -335,8 +346,8 @@
 	                    </a>
 	                    <ul class="collapse" id="component-nav">
 	                       
-	                        <li class=""><a href="{{asset('productos')}}"><i class="icon-angle-right"></i> Productos </a></li>
-	                         <li class=""><a href="{{asset('categorias')}}"><i class="icon-angle-right"></i> Categorias	 </a></li>
+	                        <li class=""><a href="<?php echo asset('productos'); ?>"><i class="icon-angle-right"></i> Productos </a></li>
+	                         <li class=""><a href="<?php echo asset('categorias'); ?>"><i class="icon-angle-right"></i> Categorias	 </a></li>
 	                        <li class=""><a href="progress.html"><i class="icon-angle-right"></i> Progress </a></li>
 	                        <li class=""><a href="tabs_panels.html"><i class="icon-angle-right"></i> Tabs & Panels </a></li>
 	                        <li class=""><a href="notifications.html"><i class="icon-angle-right"></i> Notification </a></li>
@@ -357,7 +368,7 @@
 	                          &nbsp; <span class="label label-success">5</span>&nbsp;
 	                    </a>
 	                    <ul class="collapse" id="form-nav">
-	                        <li class=""><a href="{{asset('facturas')}}"><i class="icon-angle-right"></i> Facturas </a></li>
+	                        <li class=""><a href="<?php echo asset('facturas'); ?>"><i class="icon-angle-right"></i> Facturas </a></li>
 	                        <li class=""><a href="forms_advance.html"><i class="icon-angle-right"></i> Advance </a></li>
 	                        <li class=""><a href="forms_validation.html"><i class="icon-angle-right"></i> Validation </a></li>
 	                        <li class=""><a href="forms_fileupload.html"><i class="icon-angle-right"></i> FileUpload </a></li>
@@ -375,22 +386,22 @@
 	                          &nbsp; <span class="label label-info">6</span>&nbsp;
 	                    </a>
 	                    <ul class="collapse" id="pagesr-nav">
-	                        <li><a href="{{asset('sucursales')}}"><i class="icon-angle-right"></i> Sucursales </a></li>
-	                        <li><a href="{{asset('examen')}}"><i class="icon-angle-right"></i> Examen SFV </a></li>
+	                        <li><a href="<?php echo asset('sucursales'); ?>"><i class="icon-angle-right"></i> Sucursales </a></li>
+	                        <li><a href="<?php echo asset('examen'); ?>"><i class="icon-angle-right"></i> Examen SFV </a></li>
 	                        <li><a href="pages_social.html"><i class="icon-angle-right"></i> Social </a></li>
 	                        <li><a href="pages_pricing.html"><i class="icon-angle-right"></i> Pricing </a></li>
 	                        <li><a href="pages_offline.html"><i class="icon-angle-right"></i> Offline </a></li>
 	                        <li><a href="pages_uc.html"><i class="icon-angle-right"></i> Under Construction </a></li>
 	                    </ul>
 	                </li>	                
-	                <li><a href="{{asset('salir')}}"><i class="icon-signout"></i> Salir del sistema </a></li>
+	                <li><a href="<?php echo asset('salir'); ?>"><i class="icon-signout"></i> Salir del sistema </a></li>
 
 	            </ul>
 
 	        </div>
 	        <!--END MENU SECTION -->	        
 	        <div id="content">
-	        	@yield('body')
+	        	<?php echo $__env->yieldContent('body'); ?>
 	        </div>
 	        
 		</div>

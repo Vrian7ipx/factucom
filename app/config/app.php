@@ -121,6 +121,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		'Maxxscho\LaravelTcpdf\LaravelTcpdfServiceProvider',
 		//'Dollar\Generators\GeneratorsServiceProvider',
 
 	),
