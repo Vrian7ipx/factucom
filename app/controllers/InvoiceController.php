@@ -1,7 +1,14 @@
 <?php 
 class InvoiceController extends \BaseController{
 	public function index(){
+		$invoices = Invoice::where('enterprice_id',Auth::user()->enterprice_id)->where('branch_id',Auth::user()->branch_id)->get();
+		//$statuses = InvoiceStatus::where('id',$invoi)->first();
 
+		$data = [
+			'invoices' => $invoices,
+			'statuses' => "Emitido",//$statuses->name,
+		];
+		return View::make('invoice.index',$data);
 	}
 	public function show($public_id){
 		$invoice = Invoice::where('enterprice_id',Auth::user()->enterprice_id)->where('public_id',$public_id)->first();

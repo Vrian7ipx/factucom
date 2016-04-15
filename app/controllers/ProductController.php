@@ -59,7 +59,16 @@ class ProductController extends \BaseController{
 		return View::make('product.edit',$data);
 	}
 	public function update($public_id){
-
+		$product = Product::where('enterprice_id',Auth::user()->enterprice_id)->where('public_id',$public_id)->first();		
+		$product->unit_id = Input::get('unit');
+		$product->category_id = Input::get('category');
+		$product->brand_id = Input::get('brand');
+		$product->name = Input::get('name');
+		$product->code = Input::get('code');
+		$product->price = Input::get('price');
+		$product->description = Input::get('description');
+		$product->save();
+		return Redirect::to('productos');
 	}
 	public function delete($public_id){
 		
