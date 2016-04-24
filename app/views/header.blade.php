@@ -19,11 +19,13 @@
 		{{ HTML::style('vendor/bcore/plugins/dataTables/dataTables.bootstrap.css') }}
 		{{ HTML::style('vendor/bcore/plugins/chosen/chosen.min.css') }}
 		{{ HTML::style('vendor/bcore/plugins/datepicker/css/datepicker.css') }}
+		{{ HTML::style('vendor/bcore/plugins/gritter/css/jquery.gritter.css') }}
 		<!--END GLOBAL STYLES -->
 		<!-- PAGE LEVEL STYLES -->
 		{{-- HTML::style('vendor/bcore/css/layout2.css') --}}
 		{{-- HTML::style('vendor/bcore/plugins/flot/examples/examples.css') --}}
 		{{-- HTML::style('vendor/bcore/plugins/timeline/timeline.css') --}}
+
 		
 		<!-- END PAGE LEVEL  STYLES -->
 
@@ -32,6 +34,8 @@
 		{{ HTML::script('vendor/bcore/js/login.js') }}
 		{{ HTML::script('vendor/bcore/plugins/chosen/chosen.jquery.min.js') }}
 		{{ HTML::script('vendor/bcore/plugins/datepicker/js/bootstrap-datepicker.js') }}	
+		{{ HTML::script('vendor/bcore/plugins/gritter/js/jquery.gritter.js') }}
+		{{-- HTML::script('vendor/bcore/js/moreNoti.js') --}}  
 		
 		@yield('head')
 	</head>
@@ -295,7 +299,7 @@
 	       <div id="left" >
 	            <div class="media user-media well-small">
 	                <a class="user-link" href="#">
-	                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="{{asset('vendor/bcore/img/user.gif')}}" />
+	                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="{{asset('uploads/users/'.Auth::user()->avatar)}}"  height="100" width="100"/>
 	                </a>
 	                <br />
 	                <div class="media-body">
@@ -383,6 +387,29 @@
 	                        <li><a href="pages_uc.html"><i class="icon-angle-right"></i> Under Construction </a></li>
 	                    </ul>
 	                </li>	                
+	                <li class="panel ">
+	                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#config-nav">
+	                        <i class="icon-tasks"> </i> Configuraci&oacute;n
+		   
+	                        <span class="pull-right">
+	                          <i class="icon-angle-left"></i>
+	                        </span>
+	                       &nbsp; <span class="label label-default">10</span>&nbsp;
+	                    </a>
+	                    <ul class="collapse" id="config-nav">
+	                       
+	                        <li class=""><a href="{{asset('usuarios')}}"><i class="icon-angle-right"></i> Usuarios </a></li>
+	                         <li class=""><a href="{{asset('categorias')}}"><i class="icon-angle-right"></i> Categorias	 </a></li>
+	                        <li class=""><a href="progress.html"><i class="icon-angle-right"></i> Progress </a></li>
+	                        <li class=""><a href="tabs_panels.html"><i class="icon-angle-right"></i> Tabs & Panels </a></li>
+	                        <li class=""><a href="notifications.html"><i class="icon-angle-right"></i> Notification </a></li>
+	                         <li class=""><a href="more_notifications.html"><i class="icon-angle-right"></i> More Notification </a></li>
+	                        <li class=""><a href="modals.html"><i class="icon-angle-right"></i> Modals </a></li>
+	                          <li class=""><a href="wizard.html"><i class="icon-angle-right"></i> Wizard </a></li>
+	                         <li class=""><a href="sliders.html"><i class="icon-angle-right"></i> Sliders </a></li>
+	                        <li class=""><a href="typography.html"><i class="icon-angle-right"></i> Typography </a></li>
+	                    </ul>
+	                </li>
 	                <li><a href="{{asset('salir')}}"><i class="icon-signout"></i> Salir del sistema </a></li>
 
 	            </ul>
@@ -403,3 +430,18 @@
 		
 	</body>
 </html>
+@if(Session::get('title'))
+<script type="text/javascript">
+    function notification(){
+        ti = '{{Session::get('title')}}';
+        te = '{{Session::get('text')}}';
+        $.gritter.add({            
+            title: ti,            
+            text: te,            
+            sticky: false,            
+            time: ''
+        });
+    }
+    notification();
+</script>
+@endif

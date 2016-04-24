@@ -105,6 +105,14 @@
                         <input type="text"  placeholder="Puede ingresar mas de uno." name="phone" value="{{$client->phone}}" class="form-control" />
                     </div>
                 </div>
+                 </div>
+                <div class="form-group">
+                    <label for="text1" class="control-label col-lg-4">Correo electr&oacute;nico</label>
+
+                    <div class="col-lg-8">
+                        <input type="text" value="{{$client->mail}}" placeholder="Correo v&aacute;lido." name="mail" class="form-control" />
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="text1" class="control-label col-lg-4">Datos Adicionales</label>
                     <div class="col-lg-8">

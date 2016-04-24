@@ -6,6 +6,7 @@
   padding: 10px 18px;
   border-bottom: 1px solid #111;
 }
+.modal.vista .modal-dialog { width: 75%; }
 .centertext{
         text-align:center;
       }
@@ -46,7 +47,7 @@
         </div>
       </header>         
       <div id="div-1" class="accordion-body collapse in body">
-        <form class="form-horizontal" method="POST" action="{{asset('factura')}}">          
+        <form class="form-horizontal" method="POST" id="main_form" action="{{asset('factura')}}">          
           <div class="form-group col-lg-5">
               <label>Cliente</label>
               <select id="client" name="client" onchange="addValuesClient(this)" class="form-control js-data-example-ajax">
@@ -121,8 +122,8 @@
             <div class="col-lg-12">
             <div class="col-lg-3"></div>
             <div class="col-lg-2"><a class="btn btn-primary" href="{{asset('facturas')}}"><i class="icon-ban-circle icon-white"></i> Cancelar</a></div>
-            <div class="col-lg-2"> <a type="button" class="btn btn-info btn-circle btn-lg" onclick="preview()"><i class="icon-eye-open"></i></a></div>
-            <div class="col-lg-2"><button class="btn btn-success" type="submit"><i class="icon-save icon-white"></i> Guardar</button></div>            
+            <div class="col-lg-2"> <a type="button" class="btn btn-info btn-circle btn-lg" id="preview_btn"><i class="icon-eye-open"></i></a></div>
+            <div class="col-lg-2"><button class="btn btn-success" type="submit"><i class="icon-save icon-white"></i> Emitir</button></div>            
           </form>
         </div>
       </div>    
@@ -138,9 +139,8 @@
           <div class="modal-body col-lg-12">
 
 
-        <iframe id="theFrame2" type="text/html" src="{{asset('factura2?dato=1')}}" frameborder="1" width="100%" height="800"></iframe>
-
-        <!--<iframe id="theFrame2" type="text/html" src="{{asset('preview?dato=1')}}" frameborder="1" width="100%" height="800"></iframe>-->
+          <iframe id="invoice_frame" type="text/html" frameborder="1" width="100%" height="800"></iframe>
+        
 
           </div>
             <div class="modal-footer">
@@ -154,7 +154,13 @@
 /*** DATE ***/
 $("#date").datepicker();
 /*** ENDDATE ***/
-
+/*** PREVIEW ***/
+$('#preview_btn').click(function(){
+  var datos = $('#main_form').serialize();
+    $('#invoice_frame').attr('src', '{{asset("factura/nuevo/previsualizar?'+datos+'")}}' );
+    $('#preview').modal('show');  
+});
+/*** ENDPREVIEW***/
 $(".select2").select2();
     //$("#brian").select2();
     $('#tabs').tab();

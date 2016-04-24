@@ -45,6 +45,7 @@ class InitialDatabase extends Migration {
 			$table->string('domain')->unique();
 			$table->string('nit');
 			$table->string('owner')->nullable();			
+			$table->string('logo')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 			$table->foreign('currency_id')->references('id')->on('currencies');			
@@ -55,7 +56,7 @@ class InitialDatabase extends Migration {
 			$table->string('client_extra4');
 			$table->string('client_extra5');
 		});
-		Schema::create('roles',function($table){
+		Schema::create('rols',function($table){
 			$table->increments('id');
 			$table->string('name');
 			$table->string('permissions')->nullable();
@@ -108,7 +109,7 @@ class InitialDatabase extends Migration {
 			$table->string('phone');
 			$table->string('avatar');
 			$table->unsignedInteger('public_id');
-			$table->boolean('locked')->default(false);
+			$table->boolean('enabled')->default(1);
 			$table->boolean('logged')->default(false);
 			$table->timestamps();
 			$table->softDeletes();
@@ -223,8 +224,9 @@ class InitialDatabase extends Migration {
 			$table->string('name');
 			$table->string('business_name');
 			$table->string('nit');
-			$table->string('address');
-			$table->string('phone');
+			$table->string('address')->nullable();
+			$table->string('phone')->nullable();
+			$table->string('mail')->nullable();
 			$table->string('description')->nullable();
 			$table->string('symbol');
 			$table->double('debt');
@@ -259,6 +261,8 @@ class InitialDatabase extends Migration {
 			$table->string('country');
 			$table->date('deadline');
 			/*** Aditional client data***/
+			$table->string('client_name');
+			$table->string('client_nit');
 			//$table->
 
 			/*** numerical data***/
@@ -282,7 +286,7 @@ class InitialDatabase extends Migration {
 			$table->string('control_code');
 			$table->string('legend');			
 			//$table->string('');
-			$table->unsignedInteger('especification');
+			$table->string('especification');
 			//nit,nombre usuario, nombre o rqazon social, direccion, codigo sucursal, codigo tipo factura,nombrecomprador,dui,indentificador comprador,
 			//debito fiscal, importeneto, importe total, importe ice, importe exento, descuento total, codigo cde control, num de autorizacion,
 			//numero de factura, actividad economica, fecha emision, numerio de linea, detalle de la compra, precio unitario, canidad m unidad ede medidam, preciototal

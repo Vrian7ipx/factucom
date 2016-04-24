@@ -14,15 +14,19 @@
 
 		<?php echo HTML::style('vendor/bcore/css/login.css'); ?>
 
-		<?php echo HTML::style('vendor/bcore/plugins/magic/magic.css'); ?>
+		<?php echo HTML::style('vendor/bcore/plugins/magic/magic.css'); ?>		
+		<?php echo HTML::style('vendor/bcore/css/bootstrap-fileupload.min.css'); ?>		
+		<?php echo HTML::style('vendor/bcore/css/jquery.min.css'); ?>
 
-		<?php echo HTML::script('vendor/bcore/plugins/jquery-2.0.3.min.js'); ?>
+		<?php echo HTML::style('vendor/bcore/plugins/gritter/css/jquery.gritter.css'); ?>
+
 
 		<?php echo $__env->yieldContent('head'); ?>
 	</head>
 	<body>
 		<?php echo $__env->yieldContent('body'); ?>
-		
+		<?php echo HTML::script('vendor/bcore/plugins/jquery-2.0.3.min.js'); ?>
+
 		<?php echo HTML::script('vendor/bcore/plugins/bootstrap/js/bootstrap.js'); ?>
 
 		<?php echo HTML::script('vendor/bcore/js/login.js'); ?>
@@ -33,7 +37,14 @@
 
 		<?php echo HTML::script('vendor/bcore/plugins/jquery-steps-master/build/jquery.steps.js'); ?>
 
+		<?php echo HTML::script('vendor/bcore/plugins/jasny/js/bootstrap-fileupload.js'); ?>
+
 		<?php echo HTML::script('vendor/bcore/js/WizardInit.js'); ?>   
+		<?php /* HTML::script('vendor/bcore/js/jquery-ui.min.js') */ ?>   
+		<?php echo HTML::script('vendor/bcore/plugins/gritter/js/jquery.gritter.js'); ?>
+
+		<?php echo HTML::script('vendor/bcore/js/moreNoti.js'); ?>   
+
 		<script type="text/javascript">
      $('a[href$="finish"]').click(function(){
         console.log("asdfadf");

@@ -14,7 +14,7 @@ class ClientController extends \BaseController{
 		];
 		return View::make('client.show',$data);
 	}
-	public function create(){		
+	public function create(){				
 		return View::make('client.create');
 	}
 	public function store(){
@@ -25,11 +25,14 @@ class ClientController extends \BaseController{
 		$client->nit = Input::get('nit');
 		$client->address = Input::get('address');
 		$client->phone = Input::get('phone');
+		$client->mail = Input::get('mail');
 		$client->description = Input::get('description');
 		$client->debt = 0;
 		$client->flow = 0;
 		$client->contact_data = Input::get('contact_data');		
-		$client->save();
+		$client->save();		
+		Session::flash('title','creacion de cliente');
+		Session::flash('text','creacino del ciente milford correcto.. felicidades!!!');
 		return Redirect::to('clientes');
 
 	}
@@ -47,6 +50,7 @@ class ClientController extends \BaseController{
 		$client->nit = Input::get('nit');
 		$client->address = Input::get('address');
 		$client->phone = Input::get('phone');
+		$client->mail = Input::get('mail');
 		$client->description = Input::get('description');		
 		$client->contact_data = Input::get('contact_data');		
 		$client->save();

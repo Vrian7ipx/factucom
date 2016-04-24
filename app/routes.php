@@ -89,7 +89,17 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('factura/{public_id}','InvoiceController@show');
 	Route::get('factura/editar/{public_id}','InvoiceController@edit');
 	Route::post('factura/editar/{public_id}','InvoiceController@update');
-	Route::get('factura/eliminar/{public_id}','InvoiceController@delete');
-	Route::get('previsualizacion/factura','InvoiceController@previewInvoice');
+	Route::get('factura/eliminar/{public_id}','InvoiceController@delete');	
+	Route::get('factura/nuevo/previsualizar','InvoiceController@previewInvoice');
+	Route::get('factura/estandar/{public_id}','InvoiceController@showStandard');
+	Route::get('factura/copia/{public_id}','InvoiceController@showCopy');
 	
+	/*** USERCONTROLLER ***/
+	Route::get('usuarios','UserController@index');
+	Route::get('usuario','UserController@create');
+	Route::post('usuario','UserController@store');
+	Route::get('usuario/{public_id}','UserController@show');
+	Route::get('usuario/editar/{public_id}','UserController@edit');
+	Route::post('usuario/editar/{public_id}','UserController@update');
+	Route::get('usuario/eliminar/{public_id}','UserController@delete');	
 });

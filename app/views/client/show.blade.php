@@ -39,6 +39,9 @@
                         <i class="icon-group"></i> <label>Tel&eacute;fono / Celular: </label> {{$client->phone}}
                        <small>Dato telef&oacute;nico
                         </small>
+                        <i class="icon-group"></i> <label>Correo electr&oacute;nico: </label> {{$client->mail}}
+                       <small>Correo 
+                        </small>
                         <i class="icon-group"></i> <label>Datos Adicionales: </label> {{$client->description}}
                        <small>Dato cliente
                         </small>

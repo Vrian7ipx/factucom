@@ -5,13 +5,13 @@
         <div class="col-lg-12">
             <h3 class="page-header">Crear Nuevo Cliente</h3>
         </div>
-    </div>
+    </div>    
 <form class="form-horizontal" method="POST" action="{{asset('cliente')}}">
 <div class="col-lg-12">
     <div class="box dark">
         <header>
             <div class="icons"><i class="icon-file-alt"></i></div>
-            <h5>Datos B&aacute;sicos</h5>
+            <h5>Datos B&aacute;sicos</h5> 
             <div class="toolbar">
                 <ul class="nav">
                     <!-- <li><a href="#">Link</a></li>
@@ -106,6 +106,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="text1" class="control-label col-lg-4">Correo electr&oacute;nico</label>
+
+                    <div class="col-lg-8">
+                        <input type="text"  placeholder="Correo v&aacute;lido." name="mail" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="text1" class="control-label col-lg-4">Datos Adicionales</label>
                     <div class="col-lg-8">
                         <input type="text"  placeholder="Antecedentes del cliente" name="description" class="form-control" />
@@ -128,5 +135,5 @@
 	<div class="col-lg-2"><button class="btn btn-success" type="submit"><i class="icon-save icon-white"></i> Guardar</a></div>
 </div>
 </form>
-</div>
+</div>    
 @stop

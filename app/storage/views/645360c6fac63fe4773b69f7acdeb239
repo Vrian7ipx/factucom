@@ -43,6 +43,10 @@
 
                        <small>Dato telef&oacute;nico
                         </small>
+                        <i class="icon-group"></i> <label>Correo electr&oacute;nico: </label> <?php echo $client->mail; ?>
+
+                       <small>Correo 
+                        </small>
                         <i class="icon-group"></i> <label>Datos Adicionales: </label> <?php echo $client->description; ?>
 
                        <small>Dato cliente

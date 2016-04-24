@@ -3,16 +3,18 @@
     Copyright: all right reserved 
 -->
 <!DOCTYPE html>
-@extends('layout')
-@section('title') Registro del sistema
-@stop
-@section('head')
-    {{ HTML::style('vendor/bcore/plugins/jquery-steps-master/demo/css/normalize.css') }}
-    {{ HTML::style('vendor/bcore/plugins/jquery-steps-master/demo/css/wizardMain.css') }}    
-    {{ HTML::style('vendor/bcore/plugins/jquery-steps-master/demo/css/jquery.steps.css') }}
-    {{ HTML::style('vendor/bcore/css/bootstrap-fileupload.min.css') }}    
-@stop
-@section('body')
+
+<?php $__env->startSection('title'); ?> Registro del sistema
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('head'); ?>
+    <?php echo HTML::style('vendor/bcore/plugins/jquery-steps-master/demo/css/normalize.css'); ?>
+
+    <?php echo HTML::style('vendor/bcore/plugins/jquery-steps-master/demo/css/wizardMain.css'); ?>    
+    <?php echo HTML::style('vendor/bcore/plugins/jquery-steps-master/demo/css/jquery.steps.css'); ?>
+
+    <?php echo HTML::style('vendor/bcore/css/bootstrap-fileupload.min.css'); ?>    
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('body'); ?>
 <div class="container">
 <div class="inner  col-lg-12" >
     <div class="row">
@@ -27,7 +29,7 @@
         <div class="panel-heading">
             NOmbre empresa
         </div>
-<form  action="{{asset('registrar')}}"method="POST" enctype="multipart/form-data">
+<form  action="<?php echo asset('registrar'); ?>"method="POST" enctype="multipart/form-data">
 <div class="panel-body">
     <div id="wizard" >
         <h2> Datos de la empresa </h2>
@@ -160,4 +162,5 @@
 </div>
 
 <script src="assets/plugins/jasny/js/bootstrap-fileupload.js"></script>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
