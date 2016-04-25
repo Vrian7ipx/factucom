@@ -56,7 +56,7 @@ Route::group(array('before' => 'auth'), function(){
 	/*** CATEGORYCONTROLLER ***/
 	Route::get('categorias','CategoryController@index');
 	Route::get('categoria','CategoryController@create');
-	Route::post('categoria','CategoryControllerr@store');
+	Route::post('categoria','CategoryController@store');
 	Route::get('categoria/{public_id}','CategoryController@show');
 	Route::get('categoria/editar/{public_id}','CategoryController@edit');
 	Route::post('categoria/editar/{public_id}','CategoryController@update');
@@ -102,4 +102,23 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('usuario/editar/{public_id}','UserController@edit');
 	Route::post('usuario/editar/{public_id}','UserController@update');
 	Route::get('usuario/eliminar/{public_id}','UserController@delete');	
+
+	/*** UNITCONTROLLER ***/
+	Route::get('unidades','UnitController@index');
+	Route::get('unidad','UnitController@create');
+	Route::post('unidad','UnitController@store');
+	Route::get('unidad/{public_id}','UnitController@show');
+	Route::get('unidad/editar/{public_id}','UnitController@edit');
+	Route::post('unidad/editar/{public_id}','UnitController@update');
+	Route::get('unidad/eliminar/{public_id}','UnitController@delete');
+
+
+	/*** BRANDCONTROLLER ***/
+	Route::get('marcas','BrandController@index');
+	Route::get('marca','BrandController@create');
+	Route::post('marca','BrandController@store');
+	Route::get('marca/{public_id}','BrandController@show');
+	Route::get('marca/editar/{public_id}','BrandController@edit');
+	Route::post('marca/editar/{public_id}','BrandController@update');
+	Route::get('marca/eliminar/{public_id}','BrandController@delete');
 });

@@ -354,8 +354,8 @@
 	                       
 	                        <li class=""><a href="<?php echo asset('productos'); ?>"><i class="icon-angle-right"></i> Productos </a></li>
 	                         <li class=""><a href="<?php echo asset('categorias'); ?>"><i class="icon-angle-right"></i> Categorias	 </a></li>
-	                        <li class=""><a href="progress.html"><i class="icon-angle-right"></i> Progress </a></li>
-	                        <li class=""><a href="tabs_panels.html"><i class="icon-angle-right"></i> Tabs & Panels </a></li>
+	                        <li class=""><a href="<?php echo asset('unidades'); ?>"><i class="icon-angle-right"></i> Unidades </a></li>
+	                        <li class=""><a href="<?php echo asset('marcas'); ?>"><i class="icon-angle-right"></i> Marcas </a></li>
 	                        <li class=""><a href="notifications.html"><i class="icon-angle-right"></i> Notification </a></li>
 	                         <li class=""><a href="more_notifications.html"><i class="icon-angle-right"></i> More Notification </a></li>
 	                        <li class=""><a href="modals.html"><i class="icon-angle-right"></i> Modals </a></li>

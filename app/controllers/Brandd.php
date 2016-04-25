@@ -1,5 +1,5 @@
 <?php
-class Brand extends Eloquent
+class Brandd extends Eloquent
 {
 	protected $softDelete = true;
 }

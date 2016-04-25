@@ -229,7 +229,7 @@ class InitialDatabase extends Migration {
 			$table->string('mail')->nullable();
 			$table->string('description')->nullable();
 			$table->string('symbol');
-			$table->double('debt');
+			$table->double('debt')->default(0);
 			$table->double('flow');
 			$table->string('contact_data');
 			$table->string('extra1');
@@ -275,9 +275,8 @@ class InitialDatabase extends Migration {
 			$table->float('discount');
 			$table->float('exchange');
 			$table->double('net_amount_dollar');
+			$table->double('debt');
 			//$table-> seuq esiente que poco a pococ todo se va a al migrationsauq
-
-
 
 			/*** Invoice Data***/
 			$table->unsignedInteger('number');
@@ -312,6 +311,30 @@ class InitialDatabase extends Migration {
 			$table->softDeletes();
 			$table->foreign('product_id')->references('id')->on('products');
 			$table->foreign('invoice_id')->references('id')->on('invoices');
+			$table->foreign('enterprice_id')->references('id')->on('enterprices');
+		});
+		Schema::create('payment_types',function($table){
+			$table->increments('id');
+			$table->string('name');
+			$table->string('description');
+			$table->timestamps();
+			$table->softDeletes();
+		});
+		Schema::create('payments',function($table){
+			$table->increments('id');
+			$table->unsignedInteger('public_id');
+			$table->unsignedInteger('enterprice_id')->index();
+			$table->unsignedInteger('invoice_id')->index();
+			$table->unsignedInteger('client_id')->index();
+			$table->unsignedInteger('payment_type_id')->index();
+			$table->double('amount')->default(0);
+			$table->date('date');
+			$table->string('description')->nullable();
+			$table->timestamps();
+			$table->softDeletes();
+			$table->foreign('invoice_id')->references('id')->on('invoices');
+			$table->foreign('client_id')->references('id')->on('clients');
+			$table->foreign('payment_type_id')->references('id')->on('payment_types');
 			$table->foreign('enterprice_id')->references('id')->on('enterprices');
 		});
 
